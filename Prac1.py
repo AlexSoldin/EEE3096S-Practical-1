@@ -60,7 +60,7 @@ GPIO.add_event_detect(buttonDown, GPIO.FALLING, callback=decrement,bouncetime=10
 
 # Logic that you write
 def main():
-    x = 3
+    y = 3
     #print("write your logic here")
 
 
