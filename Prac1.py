@@ -26,6 +26,32 @@ GPIO.setup(led2, GPIO.OUT)
 GPIO.setup(buttonUp, GPIO.IN)
 GPIO.setup(buttonDown, GPIO.IN)
 
+# global variables
+values = ["000","001","010","011","100","101","110","111"]
+global count
+count = 0
+
+# methods
+def increment(channel):
+    global count
+    if count==7:
+        count=0
+    else:
+        count++
+    GPIO.output(led1, int(values[count][0]))
+    GPIO.output(led2, int(values[count][1]))
+    GPIO.output(led3, int(values[count][2]))
+
+def decrement(channel):
+    global count
+    if count==0:
+        count=7
+    else:
+        count--
+    GPIO.output(led1, int(values[count][0]))
+    GPIO.output(led2, int(values[count][1]))
+    GPIO.output(led3, int(values[count][2]))
+
 # Logic that you write
 def main():
     print("write your logic here")
