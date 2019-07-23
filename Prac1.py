@@ -52,6 +52,10 @@ def decrement(channel):
     GPIO.output(led2, int(values[count][1]))
     GPIO.output(led3, int(values[count][2]))
 
+# interrupts
+GPIO.add_event_detect(buttonUp, GPIO.FALLING, callback=increment,bouncetime=300)
+GPIO.add_event_detect(buttonDown, GPIO.FALLING, callback=decrement,bouncetime=300)
+
 # Logic that you write
 def main():
     print("write your logic here")
