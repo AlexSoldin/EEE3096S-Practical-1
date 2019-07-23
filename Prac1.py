@@ -22,7 +22,7 @@ buttonDown = 22 #physical pin 15
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(led1, GPIO.OUT)
 GPIO.setup(led2, GPIO.OUT)
-GPIO.setup(led2, GPIO.OUT)
+GPIO.setup(led3, GPIO.OUT)
 GPIO.setup(buttonUp, GPIO.IN)
 GPIO.setup(buttonDown, GPIO.IN)
 
@@ -37,7 +37,7 @@ def increment(channel):
     if count==7:
         count=0
     else:
-        count++
+        count+=1
     GPIO.output(led1, int(values[count][0]))
     GPIO.output(led2, int(values[count][1]))
     GPIO.output(led3, int(values[count][2]))
@@ -47,18 +47,19 @@ def decrement(channel):
     if count==0:
         count=7
     else:
-        count--
+        count-=1
     GPIO.output(led1, int(values[count][0]))
     GPIO.output(led2, int(values[count][1]))
     GPIO.output(led3, int(values[count][2]))
 
 # interrupts
-GPIO.add_event_detect(buttonUp, GPIO.FALLING, callback=increment,bouncetime=300)
-GPIO.add_event_detect(buttonDown, GPIO.FALLING, callback=decrement,bouncetime=300)
+GPIO.add_event_detect(buttonUp, GPIO.FALLING, callback=increment,bouncetime=100)
+GPIO.add_event_detect(buttonDown, GPIO.FALLING, callback=decrement,bouncetime=100)
 
 # Logic that you write
 def main():
-    print("write your logic here")
+    x = 3
+    #print("write your logic here")
 
 
 # Only run the functions if
