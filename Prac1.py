@@ -23,8 +23,8 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(led1, GPIO.OUT)
 GPIO.setup(led2, GPIO.OUT)
 GPIO.setup(led3, GPIO.OUT)
-GPIO.setup(buttonUp, GPIO.IN)
-GPIO.setup(buttonDown, GPIO.IN)
+GPIO.setup(buttonUp, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(buttonDown, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # global variables
 values = ["000","001","010","011","100","101","110","111"]
@@ -41,6 +41,7 @@ def increment(channel):
     GPIO.output(led1, int(values[count][0]))
     GPIO.output(led2, int(values[count][1]))
     GPIO.output(led3, int(values[count][2]))
+    print(values[count])
 
 def decrement(channel):
     global count
@@ -51,6 +52,7 @@ def decrement(channel):
     GPIO.output(led1, int(values[count][0]))
     GPIO.output(led2, int(values[count][1]))
     GPIO.output(led3, int(values[count][2]))
+    print(values[count])
 
 # interrupts
 GPIO.add_event_detect(buttonUp, GPIO.FALLING, callback=increment,bouncetime=100)
