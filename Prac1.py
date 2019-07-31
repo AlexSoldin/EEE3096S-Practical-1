@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 """
-Python Practical Template
-Keegan Crankshaw
-Readjust this Docstring as follows:
 Names: Alex Soldin
 Student Number: SLDALE003
 Prac: 1
@@ -55,13 +52,14 @@ def decrement(channel):
     print(values[count])
 
 # interrupts
+#this interrupt is triggered when buttonUp changes state and calls the increment callback method
 GPIO.add_event_detect(buttonUp, GPIO.FALLING, callback=increment,bouncetime=100)
+#this interrupt is triggered when buttonDown changes state and calls the decrement callback method
 GPIO.add_event_detect(buttonDown, GPIO.FALLING, callback=decrement,bouncetime=100)
 
 # Logic that you write
 def main():
-    y = 3
-    #print("write your logic here")
+    time.sleep(60)
 
 
 # Only run the functions if
